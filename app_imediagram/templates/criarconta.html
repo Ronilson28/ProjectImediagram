@@ -1,0 +1,44 @@
+{% extends 'homepage.html' %}
+
+{% block titulo %}
+    Criar conta
+{% endblock %}
+        {% block formulario %}
+            <div class="tela">
+                <div class="fundo-tela"></div>
+                <div class="sign-up">
+                    <h1 class="imediagram2">Imediagram</h1>
+                </div>
+                <div class="formulario2">
+                    <div class="fundo-formulario2"></div>
+                    <form method="post">
+                        {{ form.csrf_token }}
+                        <div class="log-in">
+                            <p>
+                                Já possui conta?
+                                <a class="logar" href = "{{url_for('homepage')}}">Login</a>
+                            </p>
+                        </div>
+                        <div class="campo-forms2">
+                            {{ form.username.label(class="label") }}
+                            {{ form.username(class="input") }}
+                        </div>
+                        <div class="campo-forms2">
+                            {{ form.email.label(class="label") }}
+                            {{ form.email(class="input") }}
+                        </div>
+                        <div class="campo-forms2">
+                            {{ form.senha.label(class="label") }}
+                            {{ form.senha(class="input") }}
+                        </div>
+                        <div class="campo-forms2">
+                            {{ form.confirmacao_senha.label(class="label") }}
+                            {{ form.confirmacao_senha(class="input") }}
+                        </div>
+                        <div class="campo-forms">
+                            {{ form.botao_confirmacao(class="label-botao") }}
+                        </div>                        
+                    </form>
+                </div>
+            </div>
+        {% endblock %}

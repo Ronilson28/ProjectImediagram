@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block titulo %}
+            Imediagram
+        {% endblock %}
+    </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    {% block body %}
+        {% block formulario %}
+            <div class="tela">
+                <div class="fundo-tela"></div>
+                <div class="home">
+                    <h1 class="slogan">
+                        Capture, compartilhe, repita.<br>Entre no Imediagram
+                    </h1>
+                    <h1 class="imediagram">Imediagram</h1>
+                </div>
+                <div class="formulario">
+                    <div class="fundo-formulario"></div>
+                    <form method="post">
+                        {{ form.csrf_token }}
+                        <div class="barra"></div>
+                        <div class="cadastrar">
+                            <div class="fundo-cadastrar"></div>
+                            <a class="cadastrar-se" href="{{ url_for('criarconta') }}"> Cadastrar-se </a>
+                        </div>
+                        <div class="campo-forms">
+                            {{ form.email.label(class="label") }}
+                            {{ form.email(class="input") }}
+                        </div>
+                        <div class="campo-forms">
+                            {{ form.senha.label(class="label") }}
+                            {{ form.senha(class="input") }}
+                        </div>
+                        <div class="campo-forms">
+                            {{ form.botao_confirmacao(class="label-botao") }}
+                        </div>                        
+                    </form>
+                </div>
+            </div>
+        {% endblock %}
+    {% endblock %}
+
+</body>
+</html>

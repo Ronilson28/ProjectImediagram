@@ -1,0 +1,38 @@
+{% extends 'homepage.html' %}
+
+{% block titulo %}
+    @{{usuario.username}}
+{% endblock %}
+
+{% block body %}
+    {% include 'navbar.html' %}
+    <div class="tela">
+        <div class="perfil">
+            <div class="info">
+                <h2 class="username"> Usuário: {{usuario.username}} <br> Id: {{usuario.id}} </h2>
+            </div>
+            <div class="fotos2">
+                <div class="session2">
+                    {% for foto in fotos %}
+                        <div class="foto">
+                            <img src="{{ url_for('static', filename='images/fotos_posts/' + foto.imagem) }}" alt="Foto do Usuário">
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="formulario3">
+                <form class="forms" method="post">
+                    {% block formulario %}
+                        {{form.csrf_token}}
+                        <div class="campo-forms3">
+                            {{form.foto(class="upload")}}    
+                        </div>
+                        <div class="campo-forms3">
+                            {{form.botao_confirmacao(class="upload-botao")}}
+                        </div>
+                    {% endblock %}
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
